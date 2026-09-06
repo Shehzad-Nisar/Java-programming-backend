@@ -1,20 +1,18 @@
 package com.transmoney.wallet.model;
 
 public class Account {
-    private long id ;
+    private Long id ;
     private String accountNumber ;
     private String customerName;
     private String accountType;
     private double balance ;
-    private boolean status;
+    private boolean active;
 
-    public Account(long id, String customerName, String accountNumber, String accountType, double balance, boolean status) {
-        this.id = id;
+    public Account(String customerName, String accountType, double balance, boolean active) {
         this.customerName = customerName;
-        this.accountNumber = accountNumber;
         this.accountType = accountType;
         this.balance = balance;
-        this.status = status;
+        this.active = active;
     }
 
     public long getId() {
@@ -37,8 +35,8 @@ public class Account {
         return balance;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isActive() {
+        return active;
     }
 
     public void setAccountType(String accountType) {
@@ -49,7 +47,7 @@ public class Account {
         this.balance = balance;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
