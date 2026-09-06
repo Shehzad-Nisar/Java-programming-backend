@@ -1,9 +1,11 @@
 package com.transmoney.wallet.repository;
 
 import com.transmoney.wallet.model.Account;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class AccountRepository {
     private final Map<Long, Account> accountRepository = new HashMap<>();
 

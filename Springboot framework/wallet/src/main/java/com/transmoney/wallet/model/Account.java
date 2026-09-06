@@ -50,4 +50,16 @@ public class Account {
     public void setActive(boolean active) {
         this.active = active;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
 }
