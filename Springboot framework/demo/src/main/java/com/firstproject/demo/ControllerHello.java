@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class ControllerHello {
 
-    @RequestMapping(value = "/student/{id}" , method = RequestMethod.GET)
-    public Student getStudent(@PathVariable int id){
-        return new Student("Ziaraf Hussain", id);
+    @RequestMapping(value = "/student/{id}/{name}" , method = RequestMethod.GET)
+    public Student getStudent(@PathVariable int id, @PathVariable String name){
+        return new Student(id, name);
     }
 }
 
