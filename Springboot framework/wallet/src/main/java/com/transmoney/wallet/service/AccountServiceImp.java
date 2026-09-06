@@ -34,12 +34,13 @@ public class AccountServiceImp implements AccountService{
 
     @Override
     public List<Account> getAllAccounts() {
-        return List.of();
+        return accountRepository.findAll();
     }
 
     @Override
     public Account getAccountById(Long id) {
-        return null;
+        Account accountById = (Account) accountRepository.findById(id).stream().toList();
+        return accountById;
     }
 
     @Override
