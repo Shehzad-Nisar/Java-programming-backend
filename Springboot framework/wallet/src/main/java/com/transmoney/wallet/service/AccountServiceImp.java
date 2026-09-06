@@ -10,29 +10,26 @@ import java.util.UUID;
 
 @Service
 public class AccountServiceImp implements AccountService{
-    AccountRepository accountRepository = new AccountRepository();
+    private final AccountRepository accountRepository;
+
+    public AccountServiceImp(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+    }
 
 
     @Override
     public void createAccount(Account account) {
-        Long id =
+        //Generated unique id;
+        Long id = accountRepository.getNextId();
 
+       //Unique Acc number from ACC000001;
+        String accountNumber = String.format("ACC%06d",id);
 
-        int size = accountRepository.findAll().size() + 1;
-        String accountNumber = String.format("ACC%06d",size);
-
+        // added generated uniques numbers and id in object
         account.setId(id);
+        account.setAccountNumber(accountNumber);
 
-
-
-
-
-
-
-
-
-
-
+        accountRepository.save(account);
     }
 
     @Override

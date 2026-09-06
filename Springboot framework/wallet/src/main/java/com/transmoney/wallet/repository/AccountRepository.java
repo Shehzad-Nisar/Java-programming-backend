@@ -9,6 +9,12 @@ import java.util.*;
 public class AccountRepository {
     private final Map<Long, Account> accountRepository = new HashMap<>();
 
+    Long nextId = 0L;
+
+    public Long getNextId(){
+        return nextId++;
+    }
+
     public void save(Account acc){
         Objects.requireNonNull(acc, "Account must not be null.");
 

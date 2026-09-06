@@ -1,5 +1,7 @@
 package com.transmoney.wallet.model;
 
+
+
 public class Account {
     private Long id ;
     private String accountNumber ;
