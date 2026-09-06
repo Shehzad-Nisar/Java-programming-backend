@@ -24,8 +24,26 @@ public class AccountRepository {
     public void deleteById(Long id){
 
         Objects.requireNonNull(id, "Id should not be null");
+        Account deletedAccount = accountRepository.remove(id);
 
-        accountRepository.remove(id);
+        if(deletedAccount==null){
+            throw new RuntimeException("Account Not found");
+        }
+    }
+
+    public void update(Account acc){
+
+        //first validate id should not be null
+        Objects.requireNonNull(acc.getId(), "Id should not be null.");
+
+        //Second validation to check that this acc is actually inside database otherwise it will add new acc at acc.id.
+
+        if(!accountRepository.containsKey(acc.getId())){
+            throw new RuntimeException("Account Not found.");
+        }
+
+        //finally acc changed at particular id which is present.
+        accountRepository.put(acc.getId(),acc);
     }
 
 

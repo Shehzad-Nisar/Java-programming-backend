@@ -39,17 +39,17 @@ public class AccountServiceImp implements AccountService{
 
     @Override
     public Account getAccountById(Long id) {
-        Account accountById = (Account) accountRepository.findById(id).stream().toList();
-        return accountById;
+        return accountRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("Account Not found at this ID: " + id));
     }
 
     @Override
     public void updateAccount(Account account) {
-
+        accountRepository.update(account);
     }
 
     @Override
     public void deleteAccount(Long id) {
-
+        accountRepository.deleteById(id);
     }
 }
