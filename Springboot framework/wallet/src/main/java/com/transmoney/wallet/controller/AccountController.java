@@ -2,10 +2,7 @@ package com.transmoney.wallet.controller;
 
 import com.transmoney.wallet.model.Account;
 import com.transmoney.wallet.service.AccountService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,8 +16,8 @@ public class AccountController {
     }
 
     @PostMapping("/create")
-    public String createAccount(){
-        service.createAccount(new Account("Shehzad Nisar","Current-Account",5000.0,true));
+    public String createAccount(@RequestBody Account account){
+        service.createAccount(account);
         return "Account created.";
     }
 
