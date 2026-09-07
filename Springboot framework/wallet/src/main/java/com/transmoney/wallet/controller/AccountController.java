@@ -26,6 +26,13 @@ public class AccountController {
        return service.getAllAccounts();
     }
 
+    @PutMapping("/update/{id}")
+    public String update(@PathVariable Long id,@RequestBody Account account){
+        account.setId(id);
+        service.updateAccount(account);
+        return "account updated";
+    }
+
 
 
 

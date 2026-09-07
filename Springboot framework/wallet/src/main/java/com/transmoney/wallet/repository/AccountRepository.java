@@ -12,13 +12,13 @@ public class AccountRepository {
     Long nextId = 0L;
 
     public Long getNextId(){
-        return nextId++;
+        return ++nextId;
     }
 
     public void save(Account acc){
         Objects.requireNonNull(acc, "Account must not be null.");
 
-        accountRepository.put(acc.getId(),acc);
+        accountRepository.putIfAbsent(acc.getId(),acc);
     }
 
     public void deleteById(Long id){
