@@ -24,6 +24,7 @@ public class AccountRepository {
     public void deleteById(Long id){
 
         Objects.requireNonNull(id, "Id should not be null");
+
         Account deletedAccount = accountRepository.remove(id);
 
         if(deletedAccount==null){

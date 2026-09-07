@@ -33,6 +33,12 @@ public class AccountController {
         return "account updated";
     }
 
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable Long id){
+        service.deleteAccount(id);
+        return "Successfully deleted";
+    }
+
 
 
 
