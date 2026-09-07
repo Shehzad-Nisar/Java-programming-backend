@@ -42,6 +42,9 @@ public class AccountRepository {
             throw new RuntimeException("Account Not found.");
         }
 
+        acc.setAccountNumber(accountRepository.get(acc.getId()).getAccountNumber());
+
+
         //finally acc changed at particular id which is present.
         accountRepository.put(acc.getId(),acc);
     }
