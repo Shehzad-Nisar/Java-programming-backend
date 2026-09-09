@@ -52,4 +52,9 @@ public class AccountServiceImp implements AccountService{
     public void deleteAccount(Long id) {
         accountRepository.deleteById(id);
     }
+
+    @Override
+    public boolean accountExist(Long id) {
+        return accountRepository.findById(id).isPresent();
+    }
 }
