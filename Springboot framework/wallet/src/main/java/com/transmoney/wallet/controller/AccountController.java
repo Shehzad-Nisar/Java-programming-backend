@@ -18,9 +18,9 @@ public class AccountController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createAccount(@RequestBody Account account){
+    public ResponseEntity<Account> createAccount(@RequestBody Account account){
         service.createAccount(account);
-        return ResponseEntity.status(HttpStatus.CREATED).body("User Created.");
+        return ResponseEntity.status(HttpStatus.CREATED).body(account);
 
     }
 
@@ -30,10 +30,12 @@ public class AccountController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> update(@PathVariable Long id,@RequestBody Account account){
+    public ResponseEntity<Account> update(@PathVariable Long id,@RequestBody Account account){
+        if(!service.accountExist(id))
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         account.setId(id);
         service.updateAccount(account);
-        return ResponseEntity.status(HttpStatus.OK).body("updated successfully.");
+        return new ResponseEntity<>(account,HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
