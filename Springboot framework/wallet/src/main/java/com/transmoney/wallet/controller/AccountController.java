@@ -30,16 +30,16 @@ public class AccountController {
     }
 
     @PutMapping("/update/{id}")
-    public String update(@PathVariable Long id,@RequestBody Account account){
+    public ResponseEntity<String> update(@PathVariable Long id,@RequestBody Account account){
         account.setId(id);
         service.updateAccount(account);
-        return "account updated";
+        return ResponseEntity.status(HttpStatus.OK).body("updated successfully.");
     }
 
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable Long id){
+    public ResponseEntity<String> delete(@PathVariable Long id){
         service.deleteAccount(id);
-        return "Successfully deleted";
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
 
