@@ -40,7 +40,7 @@ public class AccountController {
     public ResponseEntity<String> delete(@PathVariable Long id){
         if(!service.accountExist(id))
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
-        
+
         service.deleteAccount(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
