@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.util.List;
 
 @RestController
@@ -62,7 +63,8 @@ public class AccountController {
         List<Account> searchName = service.getAllAccounts().stream()
                 .filter(account -> account.getCustomerName().equals(name))
                 .toList();
-        return new ResponseEntity<>(searchName, HttpStatus.FOUND);
+
+        return new ResponseEntity<>(searchName,HttpStatus.OK);
     }
 
 
