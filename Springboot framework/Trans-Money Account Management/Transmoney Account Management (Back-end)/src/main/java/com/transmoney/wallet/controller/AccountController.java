@@ -2,6 +2,7 @@ package com.transmoney.wallet.controller;
 
 import com.transmoney.wallet.model.Account;
 import com.transmoney.wallet.service.AccountService;
+import org.apache.coyote.http11.Http11Processor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -52,6 +53,16 @@ public class AccountController {
 
         service.deleteAccount(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    // searches using request params :
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Account>> search(@RequestParam String name){
+        List<Account> searchName = service.getAllAccounts().stream()
+                .filter(account -> account.getCustomerName().equals(name))
+                .toList();
+        return new ResponseEntity<>(searchName, HttpStatus.FOUND);
     }
 
 
