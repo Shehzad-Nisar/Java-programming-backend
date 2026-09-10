@@ -28,6 +28,13 @@ public class AccountController {
     public List<Account> getAccount(){
        return service.getAllAccounts();
     }
+    @GetMapping("/{accountid}")
+    public ResponseEntity<Account> accountByid(@PathVariable(value = "accountid",required = false) Long id){
+        if(!service.accountExist(id))
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(service.getAccountById(id),HttpStatus.OK);
+
+    }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Account> update(@PathVariable Long id,@RequestBody Account account){
